@@ -2643,24 +2643,19 @@ body {
 
 @keyframes smoke {
   0% {
-    transform: scale3d(1, 1, 1);
-    opacity: 1;
-  }
-  25% {
-    transform: scale3d(1.05, 1.05, 1.05);
     opacity: 0;
+    transform: scale3d(1, 1, 1);
   }
   50% {
+    opacity: 0.75;
+  }
+  75% {
     transform: scale3d(1.1, 1.1, 1.1);
     opacity: 0;
   }
-  75% {
+  100% {
     transform: scale3d(1.15, 1.15, 1.15);
     opacity: 0;
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-    opacity: 1;
   }
 }
 

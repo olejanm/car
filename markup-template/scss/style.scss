@@ -1,0 +1,394 @@
+//-----import media mixins
+@import 'base/variables';
+@import "base/fonts";
+@import "vendors/include-media";
+@import 'vendors/normalize';
+@import "base/mixins";
+@import "base/button";
+@import 'base/helpers';
+@import 'base/forms';
+@import 'base/typography';
+// if the project is on wp
+@import 'base/wp-reset';
+
+body{
+  min-height: 375px;
+  animation: day-night 100s linear infinite alternate;
+}
+#wrapper{
+  overflow:hidden;
+  position:relative;
+  width:100%;
+  height: 100vh;
+}
+.block{
+  width: 100vw;
+}
+.sun-wap{
+  position: absolute;
+  top: 5vw;
+  left: 0;
+  display: flex;
+  animation: sun-moon 200s linear infinite;
+  .block{
+    text-align: right;
+  }
+  .sun{
+    display: inline-block;
+    vertical-align: top;
+    position: relative; 
+    right: 15vw;
+    background: #FFF8A7;
+    max-width: 106px;
+    max-height: 106px;
+    width: 8vw;
+    border-radius: 50%;
+  }
+}
+.clouds{
+  position: absolute;
+  display: flex;
+  top: 70px;
+  left: 0;
+  animation: main-move 50s linear infinite;
+  .block{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+  }
+  img{
+    position: relative;
+    max-width: 162px;
+    width: 14vw;
+    animation: cloud-move 25s linear infinite alternate;
+  }
+  .cloud-right{
+    animation: cloud-move-right 25s linear infinite alternate;
+  }
+}
+.mountains{
+  position: absolute;
+  bottom: -0.5vw;
+  left: 0;
+  text-align: center;
+  animation: main-move 15s linear infinite;
+  display: flex;
+  img{
+    display: inline-block;
+    vertical-align: top;
+    width: 51vw;
+  }
+}
+.trees{
+  position: absolute;
+  bottom: 10vw;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  animation: main-move 4.5s linear infinite;
+  .block{
+    display: flex;
+    padding: 0 5vw;
+    justify-content: space-between;
+  }
+  img{
+    max-width: 230px;
+    width: 16vw;
+  }
+  .tree{
+    width: 50vw;
+    display: flex;
+    align-items: flex-end;
+    .small{
+      margin: 0 0 0 -90px;
+      position: relative;
+      max-width: 160px;
+      width: 11vw;
+    }
+    &.right{
+      justify-content: flex-end;
+      .small{
+        margin: 0 -60px -20px 0;
+        @include media("<desktop") {
+          margin: 0 -70px -5px 0;
+        }
+      }
+    }
+  }
+  .rabbit{
+    position: relative;
+    left: -160px;
+    @include media("<desktop") {
+      left: -70px;
+    }
+    .bushe{
+      position: relative;
+      z-index: 1;
+    }
+    img{
+      max-width: 96px;
+      width: 7vw;
+    }
+    .rabbit-image{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      max-width: 70px;
+      width: 4.8vw;
+      margin: -7px 20px;
+      animation: rabbit 7s linear infinite;
+      @include media("<desktop") {
+        display: none;
+      }
+    }
+  }
+}
+.hill{
+  display: flex;
+  position: absolute;
+  bottom: 8.5vw;
+  left: 0;
+  animation: main-move 4s linear infinite;
+  &:after{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 53%;
+    background:#9CC53B;
+  }
+  img{
+    width: 100vw;
+    max-width: none;
+  }
+}
+.car{
+  position: absolute;
+  z-index: 1;
+  left: 30vw;
+  bottom: 5vw;
+  width: 23.6vw;
+  max-width: 350px;
+  animation: car-move 10s linear infinite;
+  .carcass{
+    animation: car-speed 5s linear infinite;
+    position: relative;
+    z-index: 1;
+  }
+  .wheel{
+    position: absolute;
+    bottom: -22%;
+    right: 1.5vw;
+    width: 5vw;
+    max-width: 72px;
+    z-index: 1;
+    animation: wheel-rotate 0.5s linear infinite;
+    &.back{
+      right: auto;
+      left: 1.5vw;
+    }
+  }
+  .smoke{
+    position: absolute;
+    bottom: 1vw;
+    right: 100%;
+    animation: smoke 5s linear infinite;
+  }
+}
+.road{
+  display: flex;
+  position: absolute;
+  bottom: 2.2vw;
+  left: 0;
+  animation: main-move 2s linear infinite;
+  background: #A08E8C;
+  &:after{
+    content:"";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background:#9CC53B;
+  }
+  img{
+    width: 100vw;
+    max-width: none;
+  }
+}
+
+.bushes{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  animation: main-move 1.5s linear infinite;
+  z-index: 1;
+  .block{
+    padding: 0 0 0 5vw;
+  }
+  img{
+    display: inline-block;
+    vertical-align: top;
+    width: 13vw;
+  }
+}
+
+@keyframes car-move {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes car-speed {
+  0%, 35%, 65%, 100% {
+    transform: translateY(0px);
+  }
+  10%, 30%, 40%, 60%, 70%, 90% {
+    transform: translateY(1px);
+  }
+  15%, 25%, 45%, 55%, 75%, 85% {
+    transform: translateY(2px);
+  }
+  20%, 50%, 80% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes wheel-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes main-move {
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes sun-moon {
+  100% {
+    transform: translateX(-200vw);
+  }
+}
+
+@keyframes cloud-move {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  15% {
+    left: 50px;
+    top: -50px;
+  }
+  30% {
+    left: 100px;
+    top: 0;
+  }
+  45% {
+    left: 150px;
+    top: -50px;
+  }
+  60% {
+    left: 200px;
+    top: 0;
+  }
+  75% {
+    left: 250px;
+    top: -50px;
+  }
+  100% {
+    left: 300px;
+    top: 0;
+  }
+}
+
+@keyframes cloud-move-right {
+  0% {
+    right: 0;
+    top: 0;
+  }
+  15% {
+    right: 50px;
+    top: -50px;
+  }
+  30% {
+    right: 100px;
+    top: 0;
+  }
+  45% {
+    right: 150px;
+    top: -50px;
+  }
+  60% {
+    right: 200px;
+    top: 0;
+  }
+  75% {
+    right: 250px;
+    top: -50px;
+  }
+  100% {
+    right: 300px;
+    top: 0;
+  }
+}
+
+@keyframes day-night {
+  0% {
+    background-color: #C2E9F8;
+  }
+  100% {
+    background-color: #000;
+  }
+}
+
+@keyframes rabbit {
+  0%, 25%, 45%, 55%, 75%, 95%, 100% {
+    transform: translateY(0);
+  }
+  10%, 20% {
+    transform: translateY(-35px);
+  }
+}
+
+@keyframes smoke {
+  0% {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1.1);
+    opacity: 0;
+  }
+  75% {
+    transform: scale3d(1.15, 1.15, 1.15);
+    opacity: 0;
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
